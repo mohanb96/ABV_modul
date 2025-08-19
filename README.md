@@ -1,4 +1,4 @@
-## There is collection of statistical analysis tutories for ABV Module course
+## There is the collection of statistical analysis tutories for ABV Module course
 
 - **Day 1**: R basics and data cleaning:
 - **Day 2**: Significant testing and effect size:
