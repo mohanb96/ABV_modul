@@ -1,4 +1,4 @@
-## There is a collection of statistical analysis tutories for ABV Module course
+## There is a collection of statistical analysis tutorials for ABV Module course
 
 - **Day 1**: R basics and data cleaning: https://mohanb96.github.io/ABV_modul/D1_R_Intro.html
 - **Day 2**: Significant testing and effect size: https://mohanb96.github.io/ABV_modul/D2_test.html
