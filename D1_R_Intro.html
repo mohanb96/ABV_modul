@@ -1267,7 +1267,7 @@ margin-left: 0 !important;
         
       <h1 class="title">Day 1: R Basics and data cleaning</h1>
          <h1 class="subtitle">Hands-on tutorial using the Global Change
-Factors dataset (CombinedData.csv)</h1>
+Factors dataset (MultiFactor_data.csv)</h1>
    
          <!-- readthedown authors -->
    <div id="sidebar">
@@ -1277,13 +1277,13 @@ Factors dataset (CombinedData.csv)</h1>
       <li><a href="#overview" id="toc-overview">0. Overview</a></li>
       <li><a href="#setup-working-directory-packages" id="toc-setup-working-directory-packages">1. Setup: working
       directory &amp; packages</a></li>
-      <li><a href="#r-language-basics-5-minutes-quick-tour" id="toc-r-language-basics-5-minutes-quick-tour">2. R language
-      basics (5 minutes quick tour)</a></li>
+      <li><a href="#r-language-basics-10-minutes-quick-tour" id="toc-r-language-basics-10-minutes-quick-tour">2. R language
+      basics (10 minutes quick tour)</a></li>
       <li><a href="#inspect-the-data" id="toc-inspect-the-data">3.
       Inspect the data</a></li>
       <li><a href="#subset-merge-base-r-and-dplyr-command" id="toc-subset-merge-base-r-and-dplyr-command">4. Subset &amp;
       merge (base R and <code>dplyr</code> command)</a></li>
-      <li><a href="#basic-cleaning-type-fixes" id="toc-basic-cleaning-type-fixes">5 Basic cleaning &amp; type
+      <li><a href="#basic-cleaning-type-fixes" id="toc-basic-cleaning-type-fixes">5. Basic cleaning &amp; type
       fixes</a></li>
       <li><a href="#write-data-to-disk" id="toc-write-data-to-disk">6.
       Write data to disk</a></li>
@@ -1314,8 +1314,8 @@ package)</p></li>
 <li><p>Export data</p></li>
 </ul>
 <blockquote>
-<p>Dataset: <code>CombinedData.csv</code> (Download the dataset from the
-blackboard).</p>
+<p>Dataset: <code>MultiFactor_data.csv</code> (Download the dataset from
+the blackboard).</p>
 </blockquote>
 </div>
 <div id="dataset-structure" class="section level4">
@@ -1352,27 +1352,30 @@ activity), <code>actv_gluco</code> (β-glucosidase activity),
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>Setup your working directory. (create a file <code>ABV_course</code>
-on your desktop, and set up you working directory to this file)</p>
+<p>Setup your working directory. (create a folder
+<code>ABV_course</code> on your desktop, and set up you working
+directory to this folder) (also create R script files in the same
+folder)</p>
 <blockquote>
 <p><code>Session</code> -&gt; <code>Set Working Directory</code> -&gt;
 <code>Choose Directory</code></p>
 </blockquote>
-<p>Place the dataset <code>CombinedData.csv</code> in your working file
-(working directory) and import the dataset into R.</p>
+<p>Place the dataset <code>MultiFactor_data.csv</code> in your working
+file (working directory) and import the dataset into R.</p>
 <div id="importing-dataset" class="section level4">
 <h4>Importing dataset</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>folder <span class="ot">&lt;-</span> <span class="fu">getwd</span>()</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>data_file <span class="ot">&lt;-</span> <span class="st">&quot;CombinedData.csv&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>data_file <span class="ot">&lt;-</span> <span class="st">&quot;MultiFactor_data.csv&quot;</span></span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(folder, data_file))</span></code></pre></div>
 </div>
 <div id="try-other-ways-of-importing" class="section level4">
 <h4>Try other ways of importing</h4>
-<pre><code>soil_data &lt;- read.csv(&quot;your_file_path&quot;)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Read the combined dataset (ensure the CSV file is in your working directory)</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;MultiFactor_data.csv&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="r-language-basics-5-minutes-quick-tour" class="section level2">
-<h2>2. R language basics (5 minutes quick tour)</h2>
+<div id="r-language-basics-10-minutes-quick-tour" class="section level2">
+<h2>2. R language basics (10 minutes quick tour)</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Assignment</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)          <span class="co"># numeric vector</span></span>
@@ -1457,7 +1460,7 @@ example.</p>
 </div>
 </div>
 <div id="basic-cleaning-type-fixes" class="section level2">
-<h2>5 Basic cleaning &amp; type fixes</h2>
+<h2>5. Basic cleaning &amp; type fixes</h2>
 <div id="make-remark-a-factor-ensure-lv-is-integer" class="section level4">
 <h4>Make <code>remark</code> a factor; ensure <code>Lv</code> is
 integer</h4>
