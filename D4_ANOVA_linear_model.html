@@ -1314,10 +1314,8 @@ Bi</p>
 <div id="load-data" class="section level3">
 <h3>1.1 Load data</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">##Import dataset</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/mohanbi/Desktop/files/Job/ABV_Modul/Data_Scripts&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>folder <span class="ot">&lt;-</span> <span class="fu">getwd</span>()</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>data_file <span class="ot">&lt;-</span> <span class="st">&quot;CombinedData.csv&quot;</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(folder, data_file))</span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># Read the combined dataset (ensure the CSV file is in your working directory)</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;MultiFactor_data.csv&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="create-the-analysis-subset-control-single-factor-treatments" class="section level2">
