@@ -1113,8 +1113,9 @@ src: url(data:font/ttf;base64,AAEAAAARAQAABAAQR0RFRgs+Cz8AAjwQAAAAQEdQT1MXWeoAAA
     
         <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -1125,7 +1126,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -1366,7 +1367,7 @@ file (working directory) and import the dataset into R.</p>
 <h4>Importing dataset</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>folder <span class="ot">&lt;-</span> <span class="fu">getwd</span>()</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>data_file <span class="ot">&lt;-</span> <span class="st">&quot;MultiFactor_data.csv&quot;</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(folder, data_file))</span></code></pre></div>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(folder, data_file))</span></code></pre></div>
 </div>
 <div id="try-other-ways-of-importing" class="section level4">
 <h4>Try other ways of importing</h4>
@@ -1419,20 +1420,20 @@ length.</p>
 <div id="inspect-the-data" class="section level2">
 <h2>3. Inspect the data</h2>
 <pre><code># Structure and column names
-str(soil_data)
+str(dat)
 
 # Treatment codes present (e.g., &quot;CT&quot; control, &quot;D&quot; drought, etc.)
-unique(soil_data$remark)
+unique(dat$remark)
 
-dim(soil_data)            # rows x cols
-names(soil_data)          # column names
-head(soil_data, 3)        # first 3 rows</code></pre>
+dim(dat)            # rows x cols
+names(dat)          # column names
+head(dat, 3)        # first 3 rows</code></pre>
 <blockquote>
 <p><strong>Tip: If you want to rename your column, try this
 command</strong>:
-<code>names(soil_data)[names(soil_data)==&quot;remark&quot;] &lt;- &quot;Treatment&quot;</code>
-(rename <code>remark</code> column as <code>Treatment</code>)
-<strong>Use Chat gpt to understand the command</strong></p>
+<code>names(dat)[names(dat)==&quot;remark&quot;] &lt;- &quot;Treatment&quot;</code> (rename
+<code>remark</code> column as <code>Treatment</code>) <strong>Use Chat
+gpt to understand the command</strong></p>
 </blockquote>
 </div>
 <div id="subset-merge-base-r-and-dplyr-command" class="section level2">
@@ -1440,14 +1441,14 @@ command</strong>:
 <p>We’ll extract control (CT) and drought (D) treatment as a running
 example.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># Base R subsetting</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>control_data   <span class="ot">&lt;-</span> soil_data[soil_data<span class="sc">$</span>remark <span class="sc">==</span> <span class="st">&quot;CT&quot;</span>, ]</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>treatment_data <span class="ot">&lt;-</span> soil_data[soil_data<span class="sc">$</span>remark <span class="sc">==</span> <span class="st">&quot;D&quot;</span>, ]</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>control_data   <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>remark <span class="sc">==</span> <span class="st">&quot;CT&quot;</span>, ]</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>treatment_data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>remark <span class="sc">==</span> <span class="st">&quot;D&quot;</span>, ]</span>
 <span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a></span>
 <span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a><span class="co"># Merge two data frames vertically (same columns)</span></span>
 <span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>data_merg <span class="ot">&lt;-</span> <span class="fu">rbind</span>(control_data, treatment_data)</span></code></pre></div>
 <div id="try-other-ways-of-subsetting-dplyr-package" class="section level4">
 <h4>Try other ways of subsetting (<code>dplyr</code> package)</h4>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>data_merg <span class="ot">&lt;-</span> soil_data <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>data_merg <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">filter</span>(remark <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;CT&quot;</span>,<span class="st">&quot;D&quot;</span>)) </span></code></pre></div>
 </div>
 <div id="select-columns-of-interest" class="section level4">
@@ -1464,7 +1465,7 @@ example.</p>
 <div id="make-remark-a-factor-ensure-lv-is-integer" class="section level4">
 <h4>Make <code>remark</code> a factor; ensure <code>Lv</code> is
 integer</h4>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>soil_data <span class="ot">&lt;-</span> soil_data <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>    <span class="at">remark =</span> <span class="fu">factor</span>(remark),</span>
 <span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>    <span class="at">Lv     =</span> <span class="fu">as.integer</span>(Lv)</span>
@@ -1472,7 +1473,7 @@ integer</h4>
 </div>
 <div id="check-missingness-for-key-numeric-variables" class="section level4">
 <h4>Check missingness for key numeric variables</h4>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>soil_data <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(WSA, Decom, PH, actv_ace), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span></code></pre></div>
 <pre><code>##   WSA Decom PH actv_ace
 ## 1   6    10  2       49</code></pre>
@@ -1480,10 +1481,10 @@ integer</h4>
 <div id="handling-missing-values" class="section level4">
 <h4>Handling missing values</h4>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># Drop rows with missing WSA for a specific analysis</span></span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>dat_wsa <span class="ot">&lt;-</span> soil_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(WSA)</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>dat_wsa <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(WSA)</span>
 <span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a></span>
 <span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="co"># Impute NA with mean </span></span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>dat_imp <span class="ot">&lt;-</span> soil_data <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>dat_imp <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
 <span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">WSA_imp =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(WSA), <span class="fu">mean</span>(WSA, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), WSA))</span></code></pre></div>
 </div>
 </div>
