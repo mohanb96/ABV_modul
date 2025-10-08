@@ -42,13 +42,9 @@ Each row corresponds to one treatment combination, representing a unique set of 
 |Lv	|Number of factors applied in that treatment (from 0 to 8 in this dataset).|
 
 **Usage in Course**:
-This dataset is used throughout the Soil Ecosystem Functions under Global Change Factors course:
+This dataset is used throughout the course in:
 
-Days 1–2: Significance testing and Effect size.
-
-Days 4: ANOVA and linear Regression.
-
-Day 7: Null model analysis of synergistic and antagonistic multi-factor effects.
+Day 1,2,4 and 7
 
 **Source**:
 Bi, M. et al. (2024). Number and dissimilarity of global change factors influences soil properties and functions. Nature Communications, 15, 8188.
