@@ -26,17 +26,31 @@ Each row corresponds to one treatment combination, representing a unique set of 
 |WSA	|Water-stable aggregates, a measure of soil structural stability (related to erosion resistance and carbon storage).|
 |dissim	|Factor dissimilarity index, quantifying how mechanistically different the applied global change factors are (higher = more diverse stressor types).|
 |P, C, L, N, A, I, SU, FU, H, M, S, D|	Binary variables (1 = factor applied, 0 = absent), representing the 12 global change factors used in the experiment:
-- P: Phosphorus addition
-- C: Carbon addition
-- L: Light (shading/illumination manipulation)
-- N: Nitrogen addition
-- A: Acidification
-- I: Insecticide
-- SU: Surfactant (pollutant)
-- FU: Fungicide
-- H: Heat (warming)
-- M: Microplastic addition
-- S: Salt (salinity)
-- D: Drought|
+|P| PFAS addition |
+|C| Heavy metal (Copper addition)|
+|L| Lithium addition|
+|N| Nitrogen deposition|
+|A| Antibiotic addition|
+|I| Insecticide |
+|SU| Surfactant |
+|FU| Fungicide |
+|H| Herbicide |
+|M| Microplastic addition|
+|S| Salt (salinity)|
+|D| Drought|
 |remark|	Type of treatment combination (e.g., single-factor, multi-factor).|
 |Lv	|Number of factors applied in that treatment (from 0 to 8 in this dataset).|
+
+**Usage in Course**:
+This dataset is used throughout the Soil Ecosystem Functions under Global Change Factors course:
+
+Days 1–2: Significance testing and Effect size.
+
+Days 4: ANOVA and linear Regression.
+
+Day 7: Null model analysis of synergistic and antagonistic multi-factor effects.
+
+**Source**:
+Bi, M. et al. (2024). Number and dissimilarity of global change factors influences soil properties and functions. Nature Communications, 15, 8188.
+https://www.nature.com/articles/s41467-024-52511-2
+
