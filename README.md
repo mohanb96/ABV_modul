@@ -9,14 +9,12 @@
 - **Day 7**: Multiple factors: Interaction effects and null models: https://mohanb96.github.io/ABV_modul/D7_Null_Models.html
 - **Day 8**: Scientific writing
 
-📊 Dataset: MultiFactor_data.csv
+## 📊 Dataset: `MultiFactor_data.csv`
 
-## Description:
 This dataset summarizes results from a multi-factor global change experiment, where soil samples were exposed to various combinations of 12 global change factors (GCFs). It includes measures of soil ecosystem functions, chemical properties, and treatment composition (which stressors were applied).
 
 Each row corresponds to one treatment combination, representing a unique set of factors acting on a soil microcosm.
 
-## 🧾 Column Descriptions
 | Column	| Description |
 |---------|-------------|
 |actv_ace |	Soil acetate esterase activity, an enzyme linked to the breakdown of organic compounds (indicator of microbial activity).|
