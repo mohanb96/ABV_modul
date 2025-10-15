@@ -1431,7 +1431,7 @@ prepared:</p>
 ## Cumulative Proportion  1.000e+00</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#The summary(pca_result) will show the proportion of variance explained by each principal component (PC). Because we collected fungal traits based on 28 species (traits data has 28 dimensions), we will get 28 PCs. We expect the first one or two to explain most of the variance. For instance, you might see something like “PC1 – X% Proportion of variance, PC2 – Y% variance,...” etc.</span></span></code></pre></div>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#We can also examine the PCA loadings and scores:</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co">#- Loadings (also called rotation in prcomp output) tell us how each trait contributes to each principal component. These are found in pca_result$rotation. Essentially, it’s a matrix where columns are PCs and rows are our original traits, and values are the coefficients (usually between -1 and 1) for the linear combination. For example, if PC1 has a high positive loading for EnzymeActivity and DroughtTolerance, and a negative loading for HyphalExtensionRate, that means PC1 ~ “high enzyme &amp; tolerance vs. low growth” axis.</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co">#- Loadings (also called rotation in prcomp output) tell us how each trait contributes to each principal component. These are found in pca_result$rotation.</span></span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#- Scores (coordinates of each species on the PCs) are in pca_result$x. Each row corresponds to a species, and columns are PC1, PC2, etc. These tell us where each species lies in the new reduced-dimensional space.</span></span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co"># PCA loadings (how traits map to PCs):</span></span>
 <span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>pca_result<span class="sc">$</span>rotation</span></code></pre></div>
@@ -1739,7 +1739,7 @@ prepared:</p>
 ## 8  -0.38042453  0.02587866 -0.04373034 -2.503336e-15
 ## 9   0.04957301  0.11282164 -0.02604501 -2.242911e-15
 ## 10  0.11249253 -0.12516898  0.24308826 -2.428262e-15</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#Next, let’s visualize the PCA results. A common approach is a biplot or plotting PC1 vs PC2. We can use the base R biplot function, which plots species scores and trait loadings together:</span></span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Next, let’s visualize the PCA results.</span></span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co"># Basic PCA biplot (PC1 vs PC2):</span></span>
 <span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="fu">biplot</span>(pca_result, <span class="at">scale =</span> <span class="dv">0</span>)</span></code></pre></div>
