@@ -1113,8 +1113,9 @@ src: url(data:font/ttf;base64,AAEAAAARAQAABAAQR0RFRgs+Cz8AAjwQAAAAQEdQT1MXWeoAAA
     
         <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -1125,7 +1126,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -1466,11 +1467,11 @@ function:</p>
 ## n= 150 
 ## 
 ##         CP nsplit rel error xerror    xstd
-## 1 0.057609      0   1.00000 1.0112 0.31258
-## 2 0.032559      3   0.82163 1.1926 0.31349
-## 3 0.025760      4   0.78907 1.2428 0.31500
-## 4 0.017437      5   0.76331 1.2094 0.30610
-## 5 0.010000      6   0.74587 1.2051 0.30498</code></pre>
+## 1 0.057609      0   1.00000 1.0085 0.30931
+## 2 0.032559      3   0.82163 1.1326 0.32667
+## 3 0.025760      4   0.78907 1.1346 0.32374
+## 4 0.017437      5   0.76331 1.1272 0.32443
+## 5 0.010000      6   0.74587 1.1326 0.32508</code></pre>
 <p>This will output a table with columns: <em>CP</em>, <em>number of
 splits</em>, <em>relative error</em>, <em>xerror</em>, and
 <em>xstd</em>. Here, <em>xerror</em> is the cross-validation error (as a
@@ -1668,14 +1669,15 @@ visualize them).</p>
 <p>(This is an illustrative example). The <em>%IncMSE</em> column is the
 most relevant for us – it tells how much the mean squared error
 increases when that variable is left out. A higher value means more
-importance. According to the random forest on our data, LUI_15_20 tends
-to be the top contributor (it has the highest %IncMSE, meaning if we
-scramble land use intensity data, the model error shoots up the most).
+importance. According to the random forest on our data, Bulk density
+tends to be the top contributor (it has the highest %IncMSE, meaning if
+we scramble soil bulk density data, the model error shoots up the most).
 The next most important is often Total_N (soil nitrogen), followed by
-bulk_density. This aligns with what we saw in the single tree, but the
-random forest gives a more robust confirmation. The other variables (C:N
-ratio, Olsen P, WPT) show lower importance scores, suggesting that they
-don’t greatly influence the MP effect on WSA compared to LUI or N.</p>
+WPT (soil water penetration time). This not align with what we saw in
+the single tree, because single tree model has very high variance for
+capturing the signals. The other variables (LUI_15_20, C:N ratio, Olsen
+P) show lower importance scores, suggesting that they don’t greatly
+influence the MP effect on WSA compared to Bulk density or Total_N.</p>
 <p>The <code>varImpPlot</code> will display a bar chart of %IncMSE for
 each variable, making it easy to see the ranking.</p>
 </div>
